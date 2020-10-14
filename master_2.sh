@@ -40,7 +40,7 @@ FLUSH PRIVILEGES;
 CREATE DATABASE eschool CHARSET = utf8 COLLATE = utf8_unicode_ci;
 CREATE USER 'eschool_user'@'%' IDENTIFIED BY "$user_db_pass";
 GRANT ALL PRIVILEGES ON eschool.* TO 'eschool_user'@'%';
-GRANT REPLICATION SLAVE ON *.* TO 'slave'@'%' IDENTIFIED BY "cFGc0ulFPkwPy!";
+GRANT REPLICATION SLAVE ON *.* TO 'slave'@'%' IDENTIFIED BY "$slave_pass";
 FLUSH PRIVILEGES;
 STOP SLAVE;
 SQL_QUERY
