@@ -1,0 +1,25 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/7"
+  config.vm.network "public_network", bridge: "wlp4s0"
+  config.vm.synced_folder ".", "/vagrant", owner: "vagrant", type: "virtualbox"
+  config.vm.provider "virtualbox" do |vb|
+    vb.linked_clone = true
+    vb.memory = "2000"
+    vb.cpus = 1
+
+ end
+
+  # Mysql master1
+  config.vm.define "master1" do |master1|
+    master1.vm.hostname = "vm-mysql-master-1"
+    master1.vm.provision "shell", path: "master_1.sh"
+
+  end
+
+  # Mysql master2
+  config.vm.define "master2" do |master2|
+    master2.vm.hostname = "vm-mysql-master2"
+    master2.vm.provision "shell", path: "master_2.sh"
+
+  end
+  end
